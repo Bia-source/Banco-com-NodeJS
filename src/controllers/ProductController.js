@@ -14,6 +14,11 @@ module.exports = {
         return res.json(product);
     },
 
+    async buscarPorDescricao(req,res){
+        const product = await Products.findOne(req.body);
+        return res.json(product);
+    },
+
     async criar(req, res){
         const product = await Products.create(req.body);
         return res.json(product);
