@@ -5,7 +5,8 @@ const Products = mongoose.model('Product');
 module.exports = {
     
     async buscarTodos(req,res){
-        const products = await Products.find();
+        const { page = 1 } = req.query;
+        const products = await Products.paginate({}, { page, limit: size});
         return res.json(products);
     },
 
